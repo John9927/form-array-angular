@@ -8,6 +8,19 @@ import { FormGroup,FormArray, FormBuilder, Validators } from '@angular/forms'
 })
 export class AppComponent implements OnInit {
   form: FormGroup;
+  selected: any;
+  data = [
+    {
+      livello: "Beginner"
+    },
+    {
+      livello: "Intermediate"
+    },
+    {
+      livello: "Pro"
+    },
+  ];
+
   constructor(private fb:FormBuilder) {
     this.form = this.fb.group({
       nome: ['', Validators.required],
@@ -26,7 +39,7 @@ export class AppComponent implements OnInit {
   newProfessione(): FormGroup {
     return this.fb.group({
       linguaggi: '',
-      anni_di_esperienza: '',
+      livello: ["Beginner"],
     })
   }
 
@@ -45,13 +58,12 @@ export class AppComponent implements OnInit {
 }
 
 
-export class country {
-  id: string;
-  name: string;
+// export class Form {
+//   id: string;
+//   name: string;
 
-  constructor(id: string, name: string) {
-    this.id = id;
-    this.name = name;
-  }
-
-}
+//   constructor(id: string, name: string) {
+//     this.id = id;
+//     this.name = name;
+//   }
+// }

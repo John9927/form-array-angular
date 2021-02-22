@@ -9,8 +9,12 @@
       <div [formGroupName]="i">
         {{i}} Linguaggi:
         <input type="text" formControlName="linguaggi">
-        Anni di Esperienza:
-        <input type="number" formControlName="anni_di_esperienza">
+        Livello:
+        <select formControlName="livello" >
+          <option *ngFor="let item of data" [value]="item.livello" >
+            {{item.livello}}
+          </option>
+        </select>
         <button (click)="removeProfessione(i)">Rimuovi</button>
       </div>
     </div>
@@ -22,3 +26,5 @@
     <button type="submit">Invia</button>
   </p>
 </form>
+
+{{this.form.value |json}}
