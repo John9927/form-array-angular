@@ -7,9 +7,14 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import {AngularFirestoreModule} from "@angular/fire/firestore";
+import { DetailsComponent } from './details/details.component';
+import { RouterModule } from '@angular/router';
+import { MasterComponent } from './master/master.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DetailsComponent,
+    MasterComponent
   ],
   imports: [
     BrowserModule,
@@ -18,6 +23,8 @@ import {AngularFirestoreModule} from "@angular/fire/firestore";
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    RouterModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
