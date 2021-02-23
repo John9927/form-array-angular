@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "form-array-angular": {
+      "hosting": {
+        "form-array-angular": [
+          "form-array-angular"
+        ]
+      }
+    }
+  }
+}

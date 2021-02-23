@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 import { Component, OnInit, } from '@angular/core';
 import { FormGroup,FormArray, FormBuilder, Validators } from '@angular/forms'
 
@@ -8,7 +9,6 @@ import { FormGroup,FormArray, FormBuilder, Validators } from '@angular/forms'
 })
 export class AppComponent implements OnInit {
   form: FormGroup;
-  selected: any;
   data = [
     {
       livello: "Beginner"
@@ -20,11 +20,10 @@ export class AppComponent implements OnInit {
       livello: "Pro"
     },
   ];
-
-  constructor(private fb:FormBuilder) {
+  constructor(private fb: FormBuilder, public authService: AuthService) {
     this.form = this.fb.group({
       nome: ['', Validators.required],
-      skills: this.fb.array([]) ,
+      skills: this.fb.array([]),
     });
   }
 
@@ -52,18 +51,9 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    this.authService.createForm(this.form.value)
   }
-
 }
 
 
-// export class Form {
-//   id: string;
-//   name: string;
 
-//   constructor(id: string, name: string) {
-//     this.id = id;
-//     this.name = name;
-//   }
-// }
