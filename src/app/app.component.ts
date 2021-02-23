@@ -24,31 +24,31 @@ export class AppComponent implements OnInit {
   constructor(private fb:FormBuilder) {
     this.form = this.fb.group({
       nome: ['', Validators.required],
-      professione: this.fb.array([]) ,
+      skills: this.fb.array([]) ,
     });
   }
 
-  get professione() : FormArray {
-    return this.form.get("professione") as FormArray
+  get skills() : FormArray {
+    return this.form.get("skills") as FormArray
   }
 
   ngOnInit() {
-    this.addProfessione();
+    this.addSkills();
   }
 
-  newProfessione(): FormGroup {
+  newSkills(): FormGroup {
     return this.fb.group({
       linguaggi: '',
       livello: ["Beginner"],
     })
   }
 
-  addProfessione() {
-    this.professione.push(this.newProfessione());
+  addSkills() {
+    this.skills.push(this.newSkills());
   }
 
-  removeProfessione(i: number) {
-    this.professione.removeAt(i);
+  removeSkills(i: number) {
+    this.skills.removeAt(i);
   }
 
   onSubmit() {

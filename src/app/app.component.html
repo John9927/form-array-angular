@@ -1,30 +1,40 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <p>
-    <label>Nome: </label>
-    <input type="text" formControlName="nome" required>
-  </p>
-  Professione:
-  <div formArrayName="professione">
-    <div *ngFor="let skill of professione.controls; let i=index">
-      <div [formGroupName]="i">
-        {{i}} Linguaggi:
-        <input type="text" formControlName="linguaggi">
-        Livello:
-        <select formControlName="livello" >
-          <option *ngFor="let item of data" [value]="item.livello" >
-            {{item.livello}}
-          </option>
-        </select>
-        <button (click)="removeProfessione(i)">Rimuovi</button>
-      </div>
-    </div>
-  </div>
-  <p>
-    <button type="button" (click)="addProfessione()">Aggiungi</button>
-  </p>
-  <p>
-    <button type="submit">Invia</button>
-  </p>
-</form>
+<html>
 
-{{this.form.value |json}}
+<body>
+
+
+  <div class="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <p style="margin-bottom: 15px;">
+        <input type="text" formControlName="nome" placeholder="Nome" required>
+      </p>
+      Skills:
+      <div formArrayName="skills"  style="margin-bottom: 15px;">
+        <div *ngFor="let skill of skills.controls; let i=index">
+          <div [formGroupName]="i">
+            {{i}}
+            <input type="text" formControlName="linguaggi" placeholder="Linguaggi">
+            Livello:
+            <select formControlName="livello">
+              <option *ngFor="let item of data" [value]="item.livello">
+                {{item.livello}}
+              </option>
+            </select>
+            <button (click)="removeSkills(i)" style="margin-left: 10px;">Rimuovi</button>
+          </div>
+        </div>
+      </div>
+      <p>
+        <button type="button" (click)="addSkills()" style="margin-right: 15px;">Aggiungi</button>
+        <button type="submit">Invia</button>
+      </p>
+      <p>
+
+      </p>
+    </form>
+  </div>
+
+  <!-- {{this.form.value |json}}  -->
+</body>
+
+</html>
