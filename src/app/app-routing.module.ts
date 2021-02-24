@@ -1,12 +1,14 @@
+import { DetailUserComponent } from './detail-user/detail-user.component';
 import { MasterComponent } from './master/master.component';
-import { DetailsComponent } from './details/details.component';
+import { UserComponent } from './user/user.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: MasterComponent },
-  { path: 'detail', component: DetailsComponent },
+  { path: 'user', component: UserComponent },
+  { path: 'detail', component: DetailUserComponent },
 ];
 
 @NgModule({

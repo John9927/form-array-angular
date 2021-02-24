@@ -1,3 +1,4 @@
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
@@ -21,7 +22,7 @@ export class MasterComponent implements OnInit {
       livello: "Pro"
     },
   ];
-  constructor(private fb: FormBuilder, public authService: AuthService) {
+  constructor(private fb: FormBuilder, public authService: AuthService, private firestore: AngularFirestore) {
     this.form = this.fb.group({
       nome: ['', Validators.required],
       skills: this.fb.array([]),
@@ -31,6 +32,8 @@ export class MasterComponent implements OnInit {
   get skills() : FormArray {
     return this.form.get("skills") as FormArray
   }
+
+  exampleItems: any;
 
   ngOnInit() {
     this.addSkills();
@@ -54,4 +57,8 @@ export class MasterComponent implements OnInit {
   onSubmit() {
     this.authService.createForm(this.form.value)
   }
+
+  // getData() {
+  //   this.authService.getData();
+  // }
 }

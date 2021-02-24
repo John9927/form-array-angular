@@ -7,14 +7,16 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import {AngularFirestoreModule} from "@angular/fire/firestore";
-import { DetailsComponent } from './details/details.component';
+import { UserComponent } from './user/user.component';
 import { RouterModule } from '@angular/router';
 import { MasterComponent } from './master/master.component';
+import { DetailUserComponent } from './detail-user/detail-user.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DetailsComponent,
-    MasterComponent
+    UserComponent,
+    MasterComponent,
+    DetailUserComponent
   ],
   imports: [
     BrowserModule,
