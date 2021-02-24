@@ -10,10 +10,14 @@ export class UserComponent implements OnInit{
 
   constructor(public authService: AuthService, private firestore: AngularFirestore) {
   }
+utenti: any | undefined;
 
   ngOnInit() {
-    this.authService.getUser();
-  }
+    this.authService.getUser()
+    .then(nomi =>
+      this.utenti = nomi
+    )}
+
 
 
 }

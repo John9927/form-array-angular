@@ -31,21 +31,19 @@ export class AuthService {
         }, err => alert(err));
     });
   }
-
+  getUsers: string | any;
   // Prendo tutti gli utenti
-  getUser() {
-    const db = firebase.firestore()
-    db.collection('form')
-    .get()
-    .then((res) => {
-      res.forEach((doc) => {
-        console.log(`${doc.data().nome}`)
+  async getUser() {
+    return await firebase.firestore()
+      .collection('form')
+      .get()
+      .then((res) => res.docs.map(doc => ({
+        id: doc.id, ...doc.data()
       })
-    })
+      ))
   }
 
 }
-
 
 
 
