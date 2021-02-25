@@ -1,1 +1,11 @@
-<p>detail-user works!</p>
+<html>
+<body>
+  <div class="container">
+    <nav routerLink="/user" style="cursor: pointer; display: flex; justify-content: center; margin-bottom: 10px;">User</nav>
+    <li *ngIf="utente">
+      {{utente.nome}}
+      {{utente.skills | json}}
+    </li>
+  </div>
+</body>
+</html>

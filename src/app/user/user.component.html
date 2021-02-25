@@ -1,6 +1,12 @@
-<ng-container *ngIf="utenti">
-<div *ngFor="let utente of utenti" >
-  {{utente.nome | json}}
-</div>
-</ng-container>
-
+<html>
+<body>
+  <div class="container">
+    <nav routerLink="/home" style=" cursor: pointer; display: flex; justify-content: center; font-weight: bold; font-size: 28px;"  >Home</nav>
+    <ng-container *ngIf="utenti">
+      <li *ngFor="let utente of utenti" routerLink="/detail/{{utente.id}}" style=" display: flex; justify-content: center; list-style-type: none; padding: 10px; cursor: pointer;">
+        {{utente.nome}}
+      </li>
+    </ng-container>
+  </div>
+</body>
+</html>

@@ -57,8 +57,4 @@ export class MasterComponent implements OnInit {
   onSubmit() {
     this.authService.createForm(this.form.value)
   }
-
-  // getData() {
-  //   this.authService.getData();
-  // }
 }

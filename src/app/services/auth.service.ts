@@ -1,23 +1,12 @@
+import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import firebase from 'firebase';
-
-// type Competenze = "Beginners" | "Intermediate" | "Pro"
-// interface Skills {
-//   linguaggi: string;
-//   livello: Competenze;
-// }
-// export interface Data {
-//   nome: string,
-//   skill: Array<Skills>
-// }
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  exampleItems: any;
   constructor(private firestore: AngularFirestore) { }
 
   // Invio dati a Firebase
@@ -26,21 +15,30 @@ export class AuthService {
       resolution, reject) => {
       this.firestore.collection("form")
         .add(data)
-        .then((res) => {
+        .then(() => {
           alert("Dato inviato correttamente");
-        }, err => alert(err));
+        })
+        .catch(err => alert(err));
     });
   }
-  getUsers: string | any;
+
   // Prendo tutti gli utenti
-  async getUser() {
+  async getUsers() {
     return await firebase.firestore()
       .collection('form')
-      .get()
+      .get( )
       .then((res) => res.docs.map(doc => ({
-        id: doc.id, ...doc.data()
+        ...doc.data(), id: doc.id
       })
-      ))
+    ))
+  }
+
+  async getUser(id: string) {
+    return await firebase.firestore()
+      .collection('form')
+      .doc(id)
+      .get()
+      .then((res) => res.data())
   }
 
 }

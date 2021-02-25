@@ -1,13 +1,14 @@
 <html>
-<body>
 
+<body>
+  <nav routerLink="/user" style="color: white; cursor: pointer;">User</nav>
   <div class="container">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <p style="margin-bottom: 15px;">
         <input type="text" formControlName="nome" placeholder="Nome" required>
       </p>
       Skills:
-      <div formArrayName="skills"  style="margin-bottom: 15px;">
+      <div formArrayName="skills" style="margin-bottom: 15px;">
         <div *ngFor="let skill of skills.controls; let i=index">
           <div [formGroupName]="i">
             {{i}}
@@ -29,3 +30,6 @@
 
     </form>
   </div>
+</body>
+
+</html>
